@@ -1,22 +1,31 @@
+const {pool} = require('../../../config/index')
+const queries = require("./query_builder/queries")
 
-function addTransaction(transaction) {
+async function addTransaction({customer, product, total_price, currency}) {
+    const transaction = await pool.query(queries.addTransactionQuery,
+        [customer, product, total_price, currency])
 
+    return {id: transaction[0].insertId, customer, product, total_price, currency}
 };
 
-function getTransactions() {
-
+async function getTransactions() {
+    const transactions = await pool.query(queries.getTransactionsQuery)
+    return transactions[0]
 };
 
-function getTransactionById(id) {
-
+async function getTransactionById(id) {
+    const transaction = await pool.query(queries.getTransactionByIdQuery,
+        [id])
+    return transaction[0][0]
 };
 
-function updateTransactionById(id,) {
-
+function updateTransactionById(id, {customer, product, total_price, currency}) {
+    return pool.query(queries.updateTransactionQuery,
+        [customer, product, total_price, currency, id])
 };
 
 function deleteTransactionById(id) {
-
+    return pool.query(queries.deleteTransactionByIdQuery, [id])
 };
 
 module.exports = {
