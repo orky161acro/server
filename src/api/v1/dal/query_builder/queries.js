@@ -6,6 +6,7 @@ const updateTransactionQuery = "UPDATE transactions SET " +
                         "WHERE id = (?)"
 const getTransactionsQuery = 'SELECT * FROM transactions'
 
+const getCustomersQuery = 'SELECT * FROM customers'
 
 module.exports ={
     addTransactionQuery,
@@ -13,4 +14,5 @@ module.exports ={
     getTransactionByIdQuery,
     updateTransactionQuery,
     getTransactionsQuery,
+    getCustomersQuery
 }
