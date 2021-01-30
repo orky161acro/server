@@ -12,8 +12,8 @@ function getTransactionByIdHandler(id) {
     return transactionsDal.getTransactionById(id)
 };
 
-function updateTransactionByIdHandler(id,) {
-    return transactionsDal.updateTransactionById(id)
+function updateTransactionByIdHandler(id, transaction) {
+    return transactionsDal.updateTransactionById(id, transaction)
 };
 
 function deleteTransactionByIdHandler(id) {

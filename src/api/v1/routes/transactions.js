@@ -14,12 +14,12 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const transaction = await transactionsLogic.addTransactionHandler()
+    const transaction = await transactionsLogic.addTransactionHandler(req.body.transaction)
     res.status(200).json({ transaction });
 });
 
 router.put('/:id', async (req, res) => {
-    await transactionsLogic.updateTransactionByIdHandler(req.params.id)
+    await transactionsLogic.updateTransactionByIdHandler(req.params.id, req.body.transaction)
     res.status(202).json({ message: "success" });
 });
 
