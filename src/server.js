@@ -7,7 +7,7 @@ const apiRouter = require('./api/index');
 const compression = require('compression')
 
 const app = express()
-const port = 8080
+const port = 9001
 
 app.use(cors())
 app.use(bodyParser.json())
