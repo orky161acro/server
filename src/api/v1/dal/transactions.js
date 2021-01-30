@@ -1,11 +1,11 @@
 const {pool} = require('../../../config/index')
 const queries = require("./query_builder/queries")
 
-async function addTransaction({customer, product, total_price, currency}) {
+async function addTransaction({customer, product, total_price, currency, credit_card_type, credit_card_number}) {
     const transaction = await pool.query(queries.addTransactionQuery,
-        [customer, product, total_price, currency])
+        [customer, product, total_price, currency, credit_card_type, credit_card_number])
 
-    return {id: transaction[0].insertId, customer, product, total_price, currency}
+    return {id: transaction[0].insertId, customer, product, total_price, currency, credit_card_type, credit_card_number}
 };
 
 async function getTransactions() {
@@ -19,9 +19,9 @@ async function getTransactionById(id) {
     return transaction[0][0]
 };
 
-function updateTransactionById(id, {customer, product, total_price, currency}) {
+function updateTransactionById(id, {customer, product, total_price, currency, credit_card_type, credit_card_number}) {
     return pool.query(queries.updateTransactionQuery,
-        [customer, product, total_price, currency, id])
+        [customer, product, total_price, currency, id, credit_card_type, credit_card_number])
 };
 
 function deleteTransactionById(id) {
