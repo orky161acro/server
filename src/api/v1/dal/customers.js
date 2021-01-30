@@ -2,8 +2,8 @@ const {pool} = require('../../../config/index')
 const queries = require("./query_builder/queries")
 
 async function getCustomers() {
-    const transactions = await pool.query(queries.getTransactionsQuery)
-    return transactions[0]
+    const customers = await pool.query(queries.getCustomersQuery)
+    return customers[0]
 };
 
 module.exports = {
