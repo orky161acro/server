@@ -1,3 +1,5 @@
+const checkConnectionQuery = "DO 1"
+
 const addTransactionQuery = 'INSERT INTO transactions (customer, product, total_price, currency, credit_card_type, credit_card_number) VALUES (?, ?, ?, ?, ?, ?)'
 const deleteTransactionByIdQuery = 'DELETE FROM transactions WHERE id = (?)'
 const getTransactionByIdQuery = 'SELECT * FROM transactions WHERE id = (?)'
@@ -16,5 +18,6 @@ module.exports ={
     getTransactionByIdQuery,
     updateTransactionQuery,
     getTransactionsQuery,
-    getCustomersQuery
+    getCustomersQuery,
+    checkConnectionQuery
 }
