@@ -1,4 +1,4 @@
-const {pool} = require('../../../config/index')
+const {pool} = require('./dalInitaliztor')
 const queries = require("./query_builder/queries")
 
 async function getCustomers() {
