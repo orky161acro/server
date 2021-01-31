@@ -14,10 +14,15 @@ app.use(bodyParser.json())
 app.use(compression())
 app.use('/api', apiRouter);
 
+app.use((err, req, res, next) => {
+        if (res.headersSent) {
+            return next(err)
+        }
+        console.error(err)
+        res.status(500).json({ error: "something when wrong" })
+    }
+)
 
-app.get('/ping', function (req, res) {
-    res.status(200).json({msg: "ping"})
-})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
